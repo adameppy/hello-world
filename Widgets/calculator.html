@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head><title>Calculator</title></head>
+<body>
+	<p>
+		<label>First Number:</label>
+		<input type = "number" id="num1" placeholder="First Number Here" />
+	</p>
+	<p>
+		<strong>Function:</strong>
+		<input type="radio" name="function" value="add" id="addinput" /> <label for="addinput">+</label>
+		<input type="radio" name="function" value="subtract" id="subtractinput" /> <label for="subtractinput">-</label>
+		<input type="radio" name="function" value="multiply" id="multiplyinput" /> <label for="multiplyinput">x</label>
+		<input type="radio" name="function" value="divide" id="divideinput" /> <label for="divideinput">/</label>
+	</p>
+	<p>
+		<label>Second Number:</label>
+		<input type = "number" id="num2" placeholder="Second Number Here" />
+	</p>
+	<p>
+		<output id = "result">Result will appear here</output>
+	</p>
+	
+	<script type="text/javascript"> 
+	
+	
+	
+	var num1 = 0;
+	var num2 = 0;
+	var res = 0;
+	var calculate = function(){
+		var res = num1 + num2;
+		document.getElementById("result").textContent = "Result: "+res;
+	}
+	
+
+	document.addEventListener("DOMContentLoaded", function(){
+		document.getElementById("addinput").addEventListener("change", function(){
+			calculate = function(){
+				var res = num1 + num2;
+				document.getElementById("result").textContent = "Result: "+res;
+			}
+			calculate();
+		}, false);
+		document.getElementById("subtractinput").addEventListener("change", function(){
+			calculate = function(){
+				var res = num1 - num2;
+				document.getElementById("result").textContent = "Result: "+res;
+			}
+			calculate();
+		}, false);
+		document.getElementById("multiplyinput").addEventListener("change", function(){
+			calculate = function(){
+				var res = num1 * num2;
+				document.getElementById("result").textContent = "Result: "+res;
+			}
+			calculate();
+		}, false);
+		document.getElementById("divideinput").addEventListener("change", function(){
+			calculate = function(){
+				var res = num1 / num2;
+				document.getElementById("result").textContent = "Result: "+res;
+			}	
+			calculate();
+		}, false);
+	
+		document.getElementById("num1").addEventListener("change", function(){
+			num1 = Number(document.getElementById("num1").value);
+			calculate();
+		}, false);
+		document.getElementById("num2").addEventListener("change", function(){
+			num2 = Number(document.getElementById("num2").value);
+			calculate();
+		}, false);
+		
+	}, false);
+
+	</script>
+</body>
+</html>
+	

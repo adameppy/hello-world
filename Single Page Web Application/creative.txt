@@ -1,0 +1,21 @@
+Creative Portion:
+
+-We caused the page to refresh every 10 seconds to make sure that soon after tweets were posted by another user, the current user could see the new tweet.
+-We caused the mouse to be followed by a cursor. We made the cursor follow close enough so it would embellish the cursor on the user's computer, but not close enough to block the user from clicking anything on the site.
+-We also include a small map showing the user's current location.
+
+
+
+Notes about our project:
+We have used the following tutorial code to start creating our application.
+We had asked TAs earlier whether we could use certain code from online tutorials to start our app and they approved.
+
+We used this tutorial to start our app:
+[MEAN stack Ð A Hands on Tutorial](http://thejackalofjavascript.com/mean-stack-hands-on-tutorial)
+
+We received the following mouse code from the website below:
+http://javascript.about.com/library/blfollow1.htm
+
+We also looked at these tutorials:
+https://scotch.io/tutorials/setting-up-a-mean-stack-single-page-application
+https://thinkster.io/mean-stack-tutorial/

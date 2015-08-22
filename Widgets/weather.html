@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="weather.css" />
+<title>Weather!</title>
+<style type="text/css">
+body{
+	width: 760px; /* how wide to make your web page */
+	background-color: teal; /* what color to make the background */
+	margin: 0 auto;
+	padding: 0;
+	font:12px/16px Verdana, sans-serif; /* default font */
+}
+div#main{
+	background-color: #FFF;
+	margin: 0;
+	padding: 10px;
+}
+</style>
+</head>
+<body><div id="main">
+
+<div class="weather" id="weatherWidget">
+	<div class="weather-loc"></div>
+	<div class="weather-humidity"></div>
+	<div class="weather-temp"></div>
+	<img class="weather-tomorrow" />
+	<img class="weather-dayaftertomorrow" />
+	<p/>
+	<button id = "refresh">Refresh!</button>
+</div>
+
+ <script type="text/javascript"> 
+
+
+
+ function fetchWeather(){
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open("GET", "http://classes.engineering.wustl.edu/cse330/content/weather_json.php", true);
+	xmlHttp.addEventListener("load", ajaxCallback, false);
+	xmlHttp.send(null);
+	
+ }
+ 
+  function ajaxCallback(event){
+	var text = event.target.responseText;
+	var jsonData = JSON.parse(event.target.responseText);
+	var city = jsonData.location.city;
+	var state = jsonData.location.state;
+	var humidity = jsonData.atmosphere.humidity;
+	var current_temp = jsonData.current.temp;
+	var tomorrow = jsonData.tomorrow.code;
+	var dayafter = jsonData.dayafter.code;
+	
+	document.getElementsByClassName("weather-loc")[0].innerHTML = "<strong>"+city+"</strong>, "+state;
+	document.getElementsByClassName("weather-humidity")[0].innerHTML = humidity;
+	document.getElementsByClassName("weather-temp")[0].innerHTML = current_temp;
+	document.getElementsByClassName("weather-tomorrow")[0].src = "http://us.yimg.com/i/us/nws/weather/gr/"+tomorrow+"ds.png";
+	document.getElementsByClassName("weather-dayaftertomorrow")[0].src = "http://us.yimg.com/i/us/nws/weather/gr/"+dayafter+"ds.png";
+}
+ 
+document.addEventListener("DOMContentLoaded", fetchWeather, false);
+document.getElementById("refresh").addEventListener("click", fetchWeather, false);
+ </script>
+
+</div></body>
+</html>

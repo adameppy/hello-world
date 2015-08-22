@@ -1,0 +1,7 @@
+Adam Epstein - 248950
+David Schonfeld - 429277
+
+
+Creative Explanation: 
+For this project, we gave users the ability to make group events, share their calendars with other users,
+and made the calendar automatically default to the current month, highlighting the current day.

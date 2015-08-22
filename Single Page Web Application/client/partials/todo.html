@@ -1,0 +1,45 @@
+<div class="container" ng-controller="TodoCtrl">
+	<div>
+         <input type="button" class="btn btn-info" value="Refresh" ng-click="refresh()">
+    </div>
+	<div class="row col-md-12" ng-hide="hasUsername">
+		<div>
+            <input type="text" class="form-control input-lg" placeholder="Enter or Create Your Username" ng-model="nameInput">
+			<input type="password" class="form-control input-lg" placeholder="Enter or Create Your Password" ng-keypress="signin($event)" ng-model="pwdInput">
+        </div>
+    </div>
+    <div class="row col-md-12" ng-show="hasUsername">
+        <div>
+			<img src = {{picture}} alt = "Image not found" height = 100px class="phone-images">
+			<output> Username: {{username}} </output>
+			
+			
+            <input type="text" class="form-control input-lg" placeholder="Enter a Tweet" ng-keypress="save($event)" ng-model="todoInput">
+			<input type="text" class="form-control input-lg" placeholder="Search Tweets" ng-model="search">
+			<input type="text" class="form-control input-lg" class="pull-right" placeholder="Enter Profile Picture Link" ng-keypress="changePic($event)" ng-model="picInput">
+        </div>
+    </div>
+
+    <div class="row col-md-12 todos" class="thumbnail phone-listing">
+        <div class="alert alert-info text-center" ng-hide="todos.length > 0">
+            <h3>No Tweets yet!</h3>
+        </div>
+        <div ng-repeat="todo in todos.slice() | filter: search" class="todo col-md-12 col-sm-12 col-xs-12" ng-class="todo.isCompleted ? 'strike' : ''">
+            <!--<div class="col-md-1 col-sm-1 col-xs-1">
+                <input type="checkbox" ng-checked="todo.isCompleted" ng-click="updateStatus($event, todo._id, $index)">
+            </div>-->
+            <div class="col-md-8 col-sm-8 col-xs-8">
+				<img src={{todo.picture}} alt= "Image not Found" height = 100px width = 100px>
+                <span ng-show="!isEditable[$index]">{{todo.name}}: {{todo.todo}}</span>
+                <input ng-show="isEditable[$index]" type="text" value="{{todo.todo}}" ng-keypress="edit($event,$index);">
+                <input ng-show="isEditable[$index]" type="button" class="btn btn-warning" value="Cancel" ng-click="isEditable[$index] = false" />
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3" ng-hide="todo.name != username">
+                <input type="button" class="btn btn-info" ng-disabled="todo.isCompleted" class="pull-right" value="Edit" ng-click="isEditable[$index] = true" />
+                <input type="button" class="btn btn-danger" class="pull-right" value="Delete" ng-click="delete($index)" />
+            </div>
+
+        </div>
+    </div>
+  </div>
+</div>
